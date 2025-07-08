@@ -16,6 +16,8 @@ import {
   AlertTriangle,
   CheckCircle,
   Settings,
+  FileText,
+  Users,
 } from "lucide-react"
 
 export default function SystemsPage() {
@@ -24,20 +26,20 @@ export default function SystemsPage() {
   const systems = [
     {
       id: "SYS-001",
-      name: "COMMAND SERVER ALPHA",
-      type: "Primary Server",
+      name: "문서 분석 서버",
+      type: "AI Processing",
       status: "online",
       health: 98,
       cpu: 45,
       memory: 67,
       storage: 34,
       uptime: "247 days",
-      location: "Data Center 1",
-      lastMaintenance: "2025-05-15",
+      location: "Seoul DC-1",
+      lastMaintenance: "2025-01-05",
     },
     {
       id: "SYS-002",
-      name: "DATABASE CLUSTER BETA",
+      name: "데이터베이스 클러스터",
       type: "Database",
       status: "online",
       health: 95,
@@ -45,67 +47,94 @@ export default function SystemsPage() {
       memory: 84,
       storage: 78,
       uptime: "189 days",
-      location: "Data Center 2",
-      lastMaintenance: "2025-06-01",
+      location: "Seoul DC-2",
+      lastMaintenance: "2025-01-01",
     },
     {
       id: "SYS-003",
-      name: "SECURITY GATEWAY",
-      type: "Firewall",
+      name: "파일 저장소",
+      type: "Storage",
       status: "warning",
       health: 87,
       cpu: 23,
       memory: 45,
-      storage: 12,
+      storage: 89,
       uptime: "156 days",
-      location: "DMZ",
-      lastMaintenance: "2025-04-20",
+      location: "Seoul DC-1",
+      lastMaintenance: "2024-12-20",
     },
     {
       id: "SYS-004",
-      name: "COMMUNICATION HUB",
-      type: "Network",
+      name: "웹 애플리케이션 서버",
+      type: "Web Server",
       status: "online",
       health: 92,
       cpu: 38,
       memory: 52,
       storage: 23,
       uptime: "203 days",
-      location: "Network Core",
-      lastMaintenance: "2025-05-28",
+      location: "Seoul DC-1",
+      lastMaintenance: "2024-12-28",
     },
     {
       id: "SYS-005",
-      name: "BACKUP STORAGE ARRAY",
-      type: "Storage",
+      name: "백업 시스템",
+      type: "Backup",
       status: "maintenance",
       health: 76,
       cpu: 15,
       memory: 28,
-      storage: 89,
+      storage: 45,
       uptime: "0 days",
-      location: "Backup Facility",
-      lastMaintenance: "2025-06-17",
+      location: "Busan DC-1",
+      lastMaintenance: "2025-01-08",
     },
     {
       id: "SYS-006",
-      name: "ANALYTICS ENGINE",
-      type: "Processing",
+      name: "API 게이트웨이",
+      type: "Network",
       status: "online",
       health: 94,
-      cpu: 89,
-      memory: 76,
-      storage: 45,
+      cpu: 29,
+      memory: 41,
+      storage: 12,
       uptime: "134 days",
-      location: "Data Center 1",
-      lastMaintenance: "2025-05-10",
+      location: "Seoul DC-1",
+      lastMaintenance: "2024-12-10",
+    },
+  ]
+
+  const systemStats = [
+    {
+      title: "시스템 온라인",
+      value: "5/6",
+      icon: CheckCircle,
+      color: "text-green-500",
+    },
+    {
+      title: "경고",
+      value: "1",
+      icon: AlertTriangle,
+      color: "text-orange-500",
+    },
+    {
+      title: "평균 가동률",
+      value: "99.7%",
+      icon: Activity,
+      color: "text-white",
+    },
+    {
+      title: "유지보수 중",
+      value: "1",
+      icon: Settings,
+      color: "text-neutral-300",
     },
   ]
 
   const getStatusColor = (status) => {
     switch (status) {
       case "online":
-        return "bg-white/20 text-white"
+        return "bg-green-500/20 text-green-500"
       case "warning":
         return "bg-orange-500/20 text-orange-500"
       case "maintenance":
@@ -134,25 +163,25 @@ export default function SystemsPage() {
 
   const getSystemIcon = (type) => {
     switch (type) {
-      case "Primary Server":
-        return <Server className="w-6 h-6" />
+      case "AI Processing":
+        return <Cpu className="w-6 h-6" />
       case "Database":
         return <Database className="w-6 h-6" />
-      case "Firewall":
+      case "Storage":
+        return <HardDrive className="w-6 h-6" />
+      case "Web Server":
+        return <Server className="w-6 h-6" />
+      case "Backup":
         return <Shield className="w-6 h-6" />
       case "Network":
         return <Wifi className="w-6 h-6" />
-      case "Storage":
-        return <HardDrive className="w-6 h-6" />
-      case "Processing":
-        return <Cpu className="w-6 h-6" />
       default:
         return <Server className="w-6 h-6" />
     }
   }
 
   const getHealthColor = (health) => {
-    if (health >= 95) return "text-white"
+    if (health >= 95) return "text-green-500"
     if (health >= 85) return "text-white"
     if (health >= 70) return "text-orange-500"
     return "text-red-500"
@@ -163,61 +192,104 @@ export default function SystemsPage() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-white tracking-wider">SYSTEMS MONITOR</h1>
-          <p className="text-sm text-neutral-400">Infrastructure health and performance monitoring</p>
+          <h1 className="text-2xl font-bold text-white tracking-wider">시스템 모니터링</h1>
+          <p className="text-sm text-neutral-400">인프라 상태 및 성능 모니터링</p>
         </div>
         <div className="flex gap-2">
-          <Button className="bg-orange-500 hover:bg-orange-600 text-white">System Scan</Button>
-          <Button className="bg-orange-500 hover:bg-orange-600 text-white">Maintenance Mode</Button>
+          <Button className="bg-orange-500 hover:bg-orange-600 text-white">시스템 스캔</Button>
+          <Button className="bg-orange-500 hover:bg-orange-600 text-white">유지보수 모드</Button>
         </div>
       </div>
 
       {/* System Overview Stats */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        <Card className="bg-neutral-900 border-neutral-700">
-          <CardContent className="p-4">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-xs text-neutral-400 tracking-wider">SYSTEMS ONLINE</p>
-                <p className="text-2xl font-bold text-white font-mono">24/26</p>
+        {systemStats.map((stat, index) => (
+          <Card key={index} className="bg-neutral-900 border-neutral-700">
+            <CardContent className="p-4">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-xs text-neutral-400 tracking-wider">{stat.title}</p>
+                  <p className={`text-2xl font-bold ${stat.color}`}>{stat.value}</p>
+                </div>
+                <stat.icon className={`w-8 h-8 ${stat.color}`} />
               </div>
-              <CheckCircle className="w-8 h-8 text-white" />
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+
+      {/* Service Status */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <Card className="bg-neutral-900 border-neutral-700">
+          <CardHeader>
+            <CardTitle className="text-lg font-bold text-white">서비스 상태</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <FileText className="w-5 h-5 text-green-500" />
+                <span className="text-white">문서 분석 서비스</span>
+              </div>
+              <Badge className="bg-green-500/20 text-green-500">정상</Badge>
+            </div>
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <Database className="w-5 h-5 text-green-500" />
+                <span className="text-white">데이터베이스 서비스</span>
+              </div>
+              <Badge className="bg-green-500/20 text-green-500">정상</Badge>
+            </div>
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <HardDrive className="w-5 h-5 text-orange-500" />
+                <span className="text-white">파일 저장 서비스</span>
+              </div>
+              <Badge className="bg-orange-500/20 text-orange-500">경고</Badge>
+            </div>
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <Users className="w-5 h-5 text-green-500" />
+                <span className="text-white">사용자 인증 서비스</span>
+              </div>
+              <Badge className="bg-green-500/20 text-green-500">정상</Badge>
             </div>
           </CardContent>
         </Card>
 
         <Card className="bg-neutral-900 border-neutral-700">
-          <CardContent className="p-4">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-xs text-neutral-400 tracking-wider">WARNINGS</p>
-                <p className="text-2xl font-bold text-orange-500 font-mono">3</p>
+          <CardHeader>
+            <CardTitle className="text-lg font-bold text-white">처리 통계</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="space-y-2">
+              <div className="flex justify-between text-sm">
+                <span className="text-neutral-400">오늘 처리된 문서</span>
+                <span className="text-white font-bold">247건</span>
               </div>
-              <AlertTriangle className="w-8 h-8 text-orange-500" />
+              <div className="w-full bg-neutral-800 rounded-full h-2">
+                <div className="bg-orange-500 h-2 rounded-full" style={{ width: "82%" }}></div>
+              </div>
             </div>
-          </CardContent>
-        </Card>
 
-        <Card className="bg-neutral-900 border-neutral-700">
-          <CardContent className="p-4">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-xs text-neutral-400 tracking-wider">AVG UPTIME</p>
-                <p className="text-2xl font-bold text-white font-mono">99.7%</p>
+            <div className="space-y-2">
+              <div className="flex justify-between text-sm">
+                <span className="text-neutral-400">생성된 렌트롤</span>
+                <span className="text-white font-bold">18건</span>
               </div>
-              <Activity className="w-8 h-8 text-white" />
+              <div className="w-full bg-neutral-800 rounded-full h-2">
+                <div className="bg-green-500 h-2 rounded-full" style={{ width: "65%" }}></div>
+              </div>
             </div>
-          </CardContent>
-        </Card>
 
-        <Card className="bg-neutral-900 border-neutral-700">
-          <CardContent className="p-4">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-xs text-neutral-400 tracking-wider">MAINTENANCE</p>
-                <p className="text-2xl font-bold text-neutral-300 font-mono">1</p>
+            <div className="grid grid-cols-2 gap-4 mt-6">
+              <div className="text-center">
+                <p className="text-2xl font-bold text-white">2.3초</p>
+                <p className="text-xs text-neutral-400">평균 처리시간</p>
               </div>
-              <Settings className="w-8 h-8 text-neutral-300" />
+              <div className="text-center">
+                <p className="text-2xl font-bold text-white">99.2%</p>
+                <p className="text-xs text-neutral-400">성공률</p>
+              </div>
             </div>
           </CardContent>
         </Card>
@@ -248,15 +320,15 @@ export default function SystemsPage() {
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="flex items-center justify-between">
-                <span className="text-xs text-neutral-400">SYSTEM HEALTH</span>
-                <span className={`text-sm font-bold font-mono ${getHealthColor(system.health)}`}>{system.health}%</span>
+                <span className="text-xs text-neutral-400">시스템 상태</span>
+                <span className={`text-sm font-bold ${getHealthColor(system.health)}`}>{system.health}%</span>
               </div>
               <Progress value={system.health} className="h-2" />
 
               <div className="grid grid-cols-3 gap-4 text-xs">
                 <div>
                   <div className="text-neutral-400 mb-1">CPU</div>
-                  <div className="text-white font-mono">{system.cpu}%</div>
+                  <div className="text-white">{system.cpu}%</div>
                   <div className="w-full bg-neutral-800 rounded-full h-1 mt-1">
                     <div
                       className="bg-orange-500 h-1 rounded-full transition-all duration-300"
@@ -265,8 +337,8 @@ export default function SystemsPage() {
                   </div>
                 </div>
                 <div>
-                  <div className="text-neutral-400 mb-1">MEMORY</div>
-                  <div className="text-white font-mono">{system.memory}%</div>
+                  <div className="text-neutral-400 mb-1">메모리</div>
+                  <div className="text-white">{system.memory}%</div>
                   <div className="w-full bg-neutral-800 rounded-full h-1 mt-1">
                     <div
                       className="bg-orange-500 h-1 rounded-full transition-all duration-300"
@@ -275,8 +347,8 @@ export default function SystemsPage() {
                   </div>
                 </div>
                 <div>
-                  <div className="text-neutral-400 mb-1">STORAGE</div>
-                  <div className="text-white font-mono">{system.storage}%</div>
+                  <div className="text-neutral-400 mb-1">저장소</div>
+                  <div className="text-white">{system.storage}%</div>
                   <div className="w-full bg-neutral-800 rounded-full h-1 mt-1">
                     <div
                       className="bg-orange-500 h-1 rounded-full transition-all duration-300"
@@ -288,11 +360,11 @@ export default function SystemsPage() {
 
               <div className="space-y-1 text-xs text-neutral-400">
                 <div className="flex justify-between">
-                  <span>Uptime:</span>
-                  <span className="text-white font-mono">{system.uptime}</span>
+                  <span>가동시간:</span>
+                  <span className="text-white">{system.uptime}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span>Location:</span>
+                  <span>위치:</span>
                   <span className="text-white">{system.location}</span>
                 </div>
               </div>
@@ -327,7 +399,7 @@ export default function SystemsPage() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-4">
                   <div>
-                    <h3 className="text-sm font-medium text-neutral-300 tracking-wider mb-2">SYSTEM STATUS</h3>
+                    <h3 className="text-sm font-medium text-neutral-300 tracking-wider mb-2">시스템 상태</h3>
                     <div className="flex items-center gap-2">
                       {getStatusIcon(selectedSystem.status)}
                       <Badge className={getStatusColor(selectedSystem.status)}>
@@ -337,25 +409,23 @@ export default function SystemsPage() {
                   </div>
 
                   <div>
-                    <h3 className="text-sm font-medium text-neutral-300 tracking-wider mb-2">SYSTEM INFORMATION</h3>
+                    <h3 className="text-sm font-medium text-neutral-300 tracking-wider mb-2">시스템 정보</h3>
                     <div className="space-y-2 text-sm">
                       <div className="flex justify-between">
-                        <span className="text-neutral-400">Location:</span>
+                        <span className="text-neutral-400">위치:</span>
                         <span className="text-white">{selectedSystem.location}</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-neutral-400">Uptime:</span>
-                        <span className="text-white font-mono">{selectedSystem.uptime}</span>
+                        <span className="text-neutral-400">가동시간:</span>
+                        <span className="text-white">{selectedSystem.uptime}</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-neutral-400">Last Maintenance:</span>
-                        <span className="text-white font-mono">{selectedSystem.lastMaintenance}</span>
+                        <span className="text-neutral-400">마지막 유지보수:</span>
+                        <span className="text-white">{selectedSystem.lastMaintenance}</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-neutral-400">Health Score:</span>
-                        <span className={`font-mono ${getHealthColor(selectedSystem.health)}`}>
-                          {selectedSystem.health}%
-                        </span>
+                        <span className="text-neutral-400">상태 점수:</span>
+                        <span className={`${getHealthColor(selectedSystem.health)}`}>{selectedSystem.health}%</span>
                       </div>
                     </div>
                   </div>
@@ -363,12 +433,12 @@ export default function SystemsPage() {
 
                 <div className="space-y-4">
                   <div>
-                    <h3 className="text-sm font-medium text-neutral-300 tracking-wider mb-2">RESOURCE USAGE</h3>
+                    <h3 className="text-sm font-medium text-neutral-300 tracking-wider mb-2">리소스 사용량</h3>
                     <div className="space-y-3">
                       <div>
                         <div className="flex justify-between text-sm mb-1">
-                          <span className="text-neutral-400">CPU Usage</span>
-                          <span className="text-white font-mono">{selectedSystem.cpu}%</span>
+                          <span className="text-neutral-400">CPU 사용량</span>
+                          <span className="text-white">{selectedSystem.cpu}%</span>
                         </div>
                         <div className="w-full bg-neutral-800 rounded-full h-2">
                           <div
@@ -380,8 +450,8 @@ export default function SystemsPage() {
 
                       <div>
                         <div className="flex justify-between text-sm mb-1">
-                          <span className="text-neutral-400">Memory Usage</span>
-                          <span className="text-white font-mono">{selectedSystem.memory}%</span>
+                          <span className="text-neutral-400">메모리 사용량</span>
+                          <span className="text-white">{selectedSystem.memory}%</span>
                         </div>
                         <div className="w-full bg-neutral-800 rounded-full h-2">
                           <div
@@ -393,8 +463,8 @@ export default function SystemsPage() {
 
                       <div>
                         <div className="flex justify-between text-sm mb-1">
-                          <span className="text-neutral-400">Storage Usage</span>
-                          <span className="text-white font-mono">{selectedSystem.storage}%</span>
+                          <span className="text-neutral-400">저장소 사용량</span>
+                          <span className="text-white">{selectedSystem.storage}%</span>
                         </div>
                         <div className="w-full bg-neutral-800 rounded-full h-2">
                           <div
@@ -409,18 +479,18 @@ export default function SystemsPage() {
               </div>
 
               <div className="flex gap-2 pt-4 border-t border-neutral-700">
-                <Button className="bg-orange-500 hover:bg-orange-600 text-white">Restart System</Button>
+                <Button className="bg-orange-500 hover:bg-orange-600 text-white">시스템 재시작</Button>
                 <Button
                   variant="outline"
                   className="border-neutral-700 text-neutral-400 hover:bg-neutral-800 hover:text-neutral-300 bg-transparent"
                 >
-                  View Logs
+                  로그 보기
                 </Button>
                 <Button
                   variant="outline"
                   className="border-neutral-700 text-neutral-400 hover:bg-neutral-800 hover:text-neutral-300 bg-transparent"
                 >
-                  Schedule Maintenance
+                  유지보수 예약
                 </Button>
               </div>
             </CardContent>
