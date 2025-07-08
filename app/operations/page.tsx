@@ -143,7 +143,7 @@ export default function OperationsPage() {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-xs text-neutral-400 tracking-wider">ACTIVE OPS</p>
-                <p className="text-2xl font-bold text-white font-mono">23</p>
+                <p className="text-2xl font-bold text-white">23</p>
               </div>
               <Target className="w-8 h-8 text-white" />
             </div>
@@ -155,7 +155,7 @@ export default function OperationsPage() {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-xs text-neutral-400 tracking-wider">COMPLETED</p>
-                <p className="text-2xl font-bold text-white font-mono">156</p>
+                <p className="text-2xl font-bold text-white">156</p>
               </div>
               <CheckCircle className="w-8 h-8 text-white" />
             </div>
@@ -167,7 +167,7 @@ export default function OperationsPage() {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-xs text-neutral-400 tracking-wider">COMPROMISED</p>
-                <p className="text-2xl font-bold text-red-500 font-mono">2</p>
+                <p className="text-2xl font-bold text-red-500">2</p>
               </div>
               <XCircle className="w-8 h-8 text-red-500" />
             </div>
@@ -179,7 +179,7 @@ export default function OperationsPage() {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-xs text-neutral-400 tracking-wider">SUCCESS RATE</p>
-                <p className="text-2xl font-bold text-white font-mono">94%</p>
+                <p className="text-2xl font-bold text-white">94%</p>
               </div>
               <AlertTriangle className="w-8 h-8 text-white" />
             </div>
@@ -199,7 +199,7 @@ export default function OperationsPage() {
               <div className="flex items-start justify-between">
                 <div>
                   <CardTitle className="text-sm font-bold text-white tracking-wider">{operation.name}</CardTitle>
-                  <p className="text-xs text-neutral-400 font-mono">{operation.id}</p>
+                  <p className="text-xs text-neutral-400">{operation.id}</p>
                 </div>
                 <div className="flex items-center gap-2">{getStatusIcon(operation.status)}</div>
               </div>
@@ -230,7 +230,7 @@ export default function OperationsPage() {
               <div className="space-y-2">
                 <div className="flex justify-between text-xs">
                   <span className="text-neutral-400">Progress</span>
-                  <span className="text-white font-mono">{operation.progress}%</span>
+                  <span className="text-white">{operation.progress}%</span>
                 </div>
                 <div className="w-full bg-neutral-800 rounded-full h-2">
                   <div
@@ -251,7 +251,7 @@ export default function OperationsPage() {
             <CardHeader className="flex flex-row items-center justify-between">
               <div>
                 <CardTitle className="text-xl font-bold text-white tracking-wider">{selectedOperation.name}</CardTitle>
-                <p className="text-sm text-neutral-400 font-mono">{selectedOperation.id}</p>
+                <p className="text-sm text-neutral-400">{selectedOperation.id}</p>
               </div>
               <Button
                 variant="ghost"
@@ -285,15 +285,15 @@ export default function OperationsPage() {
                       </div>
                       <div className="flex justify-between">
                         <span className="text-neutral-400">Agents:</span>
-                        <span className="text-white font-mono">{selectedOperation.agents}</span>
+                        <span className="text-white">{selectedOperation.agents}</span>
                       </div>
                       <div className="flex justify-between">
                         <span className="text-neutral-400">Start Date:</span>
-                        <span className="text-white font-mono">{selectedOperation.startDate}</span>
+                        <span className="text-white">{selectedOperation.startDate}</span>
                       </div>
                       <div className="flex justify-between">
                         <span className="text-neutral-400">Est. Completion:</span>
-                        <span className="text-white font-mono">{selectedOperation.estimatedCompletion}</span>
+                        <span className="text-white">{selectedOperation.estimatedCompletion}</span>
                       </div>
                     </div>
                   </div>
@@ -305,7 +305,7 @@ export default function OperationsPage() {
                     <div className="space-y-2">
                       <div className="flex justify-between text-sm">
                         <span className="text-neutral-400">Completion</span>
-                        <span className="text-white font-mono">{selectedOperation.progress}%</span>
+                        <span className="text-white">{selectedOperation.progress}%</span>
                       </div>
                       <div className="w-full bg-neutral-800 rounded-full h-3">
                         <div

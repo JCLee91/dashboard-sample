@@ -131,7 +131,7 @@ export default function SystemsPage() {
     },
   ]
 
-  const getStatusColor = (status: string) => {
+  const getStatusColor = (status) => {
     switch (status) {
       case "online":
         return "bg-green-500/20 text-green-500"
@@ -146,7 +146,7 @@ export default function SystemsPage() {
     }
   }
 
-  const getStatusIcon = (status: string) => {
+  const getStatusIcon = (status) => {
     switch (status) {
       case "online":
         return <CheckCircle className="w-4 h-4" />
@@ -161,7 +161,7 @@ export default function SystemsPage() {
     }
   }
 
-  const getSystemIcon = (type: string) => {
+  const getSystemIcon = (type) => {
     switch (type) {
       case "AI Processing":
         return <Cpu className="w-6 h-6" />
@@ -180,7 +180,7 @@ export default function SystemsPage() {
     }
   }
 
-  const getHealthColor = (health: number) => {
+  const getHealthColor = (health) => {
     if (health >= 95) return "text-green-500"
     if (health >= 85) return "text-white"
     if (health >= 70) return "text-orange-500"
