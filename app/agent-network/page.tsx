@@ -129,7 +129,7 @@ export default function AgentNetworkPage() {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-xs text-neutral-400 tracking-wider">ACTIVE AGENTS</p>
-                <p className="text-2xl font-bold text-white">847</p>
+                <p className="text-2xl font-bold text-white font-mono">847</p>
               </div>
               <Shield className="w-8 h-8 text-white" />
             </div>
@@ -141,7 +141,7 @@ export default function AgentNetworkPage() {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-xs text-neutral-400 tracking-wider">COMPROMISED</p>
-                <p className="text-2xl font-bold text-red-500">3</p>
+                <p className="text-2xl font-bold text-red-500 font-mono">3</p>
               </div>
               <Shield className="w-8 h-8 text-red-500" />
             </div>
@@ -153,7 +153,7 @@ export default function AgentNetworkPage() {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-xs text-neutral-400 tracking-wider">IN TRAINING</p>
-                <p className="text-2xl font-bold text-orange-500">23</p>
+                <p className="text-2xl font-bold text-orange-500 font-mono">23</p>
               </div>
               <Shield className="w-8 h-8 text-orange-500" />
             </div>
@@ -190,7 +190,7 @@ export default function AgentNetworkPage() {
                     }`}
                     onClick={() => setSelectedAgent(agent)}
                   >
-                    <td className="py-3 px-4 text-sm text-white">{agent.id}</td>
+                    <td className="py-3 px-4 text-sm text-white font-mono">{agent.id}</td>
                     <td className="py-3 px-4 text-sm text-white">{agent.name}</td>
                     <td className="py-3 px-4">
                       <div className="flex items-center gap-2">
@@ -217,10 +217,10 @@ export default function AgentNetworkPage() {
                     <td className="py-3 px-4">
                       <div className="flex items-center gap-2">
                         <Clock className="w-3 h-3 text-neutral-400" />
-                        <span className="text-sm text-neutral-300">{agent.lastSeen}</span>
+                        <span className="text-sm text-neutral-300 font-mono">{agent.lastSeen}</span>
                       </div>
                     </td>
-                    <td className="py-3 px-4 text-sm text-white">{agent.missions}</td>
+                    <td className="py-3 px-4 text-sm text-white font-mono">{agent.missions}</td>
                     <td className="py-3 px-4">
                       <span
                         className={`text-xs px-2 py-1 rounded uppercase tracking-wider ${
@@ -256,7 +256,7 @@ export default function AgentNetworkPage() {
             <CardHeader className="flex flex-row items-center justify-between">
               <div>
                 <CardTitle className="text-lg font-bold text-white tracking-wider">{selectedAgent.name}</CardTitle>
-                <p className="text-sm text-neutral-400">{selectedAgent.id}</p>
+                <p className="text-sm text-neutral-400 font-mono">{selectedAgent.id}</p>
               </div>
               <Button
                 variant="ghost"
@@ -291,7 +291,7 @@ export default function AgentNetworkPage() {
                 </div>
                 <div>
                   <p className="text-xs text-neutral-400 tracking-wider mb-1">MISSIONS COMPLETED</p>
-                  <p className="text-sm text-white">{selectedAgent.missions}</p>
+                  <p className="text-sm text-white font-mono">{selectedAgent.missions}</p>
                 </div>
                 <div>
                   <p className="text-xs text-neutral-400 tracking-wider mb-1">RISK LEVEL</p>

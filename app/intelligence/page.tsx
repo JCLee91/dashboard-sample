@@ -160,7 +160,7 @@ export default function IntelligencePage() {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-xs text-neutral-400 tracking-wider">TOTAL REPORTS</p>
-                <p className="text-2xl font-bold text-white">1,247</p>
+                <p className="text-2xl font-bold text-white font-mono">1,247</p>
               </div>
               <FileText className="w-8 h-8 text-white" />
             </div>
@@ -172,7 +172,7 @@ export default function IntelligencePage() {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-xs text-neutral-400 tracking-wider">CRITICAL THREATS</p>
-                <p className="text-2xl font-bold text-red-500">12</p>
+                <p className="text-2xl font-bold text-red-500 font-mono">12</p>
               </div>
               <AlertTriangle className="w-8 h-8 text-red-500" />
             </div>
@@ -184,7 +184,7 @@ export default function IntelligencePage() {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-xs text-neutral-400 tracking-wider">ACTIVE SOURCES</p>
-                <p className="text-2xl font-bold text-white">89</p>
+                <p className="text-2xl font-bold text-white font-mono">89</p>
               </div>
               <Globe className="w-8 h-8 text-white" />
             </div>
@@ -211,7 +211,7 @@ export default function IntelligencePage() {
                       <FileText className="w-5 h-5 text-neutral-400 mt-0.5" />
                       <div className="flex-1">
                         <h3 className="text-sm font-bold text-white tracking-wider">{report.title}</h3>
-                        <p className="text-xs text-neutral-400">{report.id}</p>
+                        <p className="text-xs text-neutral-400 font-mono">{report.id}</p>
                       </div>
                     </div>
 
@@ -242,7 +242,7 @@ export default function IntelligencePage() {
                         <Shield className="w-3 h-3" />
                         <span>{report.source}</span>
                       </div>
-                      <div className="">{report.date}</div>
+                      <div className="font-mono">{report.date}</div>
                     </div>
                   </div>
                 </div>
@@ -259,7 +259,7 @@ export default function IntelligencePage() {
             <CardHeader className="flex flex-row items-center justify-between">
               <div>
                 <CardTitle className="text-xl font-bold text-white tracking-wider">{selectedReport.title}</CardTitle>
-                <p className="text-sm text-neutral-400">{selectedReport.id}</p>
+                <p className="text-sm text-neutral-400 font-mono">{selectedReport.id}</p>
               </div>
               <Button
                 variant="ghost"
@@ -289,7 +289,7 @@ export default function IntelligencePage() {
                     <div className="space-y-2 text-sm">
                       <div className="flex justify-between">
                         <span className="text-neutral-400">Source Type:</span>
-                        <span className="text-white">{selectedReport.source}</span>
+                        <span className="text-white font-mono">{selectedReport.source}</span>
                       </div>
                       <div className="flex justify-between">
                         <span className="text-neutral-400">Location:</span>
@@ -297,7 +297,7 @@ export default function IntelligencePage() {
                       </div>
                       <div className="flex justify-between">
                         <span className="text-neutral-400">Date:</span>
-                        <span className="text-white">{selectedReport.date}</span>
+                        <span className="text-white font-mono">{selectedReport.date}</span>
                       </div>
                       <div className="flex justify-between">
                         <span className="text-neutral-400">Status:</span>

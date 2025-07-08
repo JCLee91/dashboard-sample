@@ -15,15 +15,15 @@ export default function CommandCenterPage() {
           <CardContent>
             <div className="grid grid-cols-3 gap-4 mb-6">
               <div className="text-center">
-                <div className="text-2xl font-bold text-white">190</div>
+                <div className="text-2xl font-bold text-white font-mono">190</div>
                 <div className="text-xs text-neutral-500">Active Field</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-white">990</div>
+                <div className="text-2xl font-bold text-white font-mono">990</div>
                 <div className="text-xs text-neutral-500">Undercover</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-white">290</div>
+                <div className="text-2xl font-bold text-white font-mono">290</div>
                 <div className="text-xs text-neutral-500">Training</div>
               </div>
             </div>
@@ -50,7 +50,7 @@ export default function CommandCenterPage() {
                       }`}
                     ></div>
                     <div>
-                      <div className="text-xs text-white">{agent.id}</div>
+                      <div className="text-xs text-white font-mono">{agent.id}</div>
                       <div className="text-xs text-neutral-500">{agent.name}</div>
                     </div>
                   </div>
@@ -108,14 +108,14 @@ export default function CommandCenterPage() {
                   key={index}
                   className="text-xs border-l-2 border-orange-500 pl-3 hover:bg-neutral-800 p-2 rounded transition-colors"
                 >
-                  <div className="text-neutral-500">{log.time}</div>
+                  <div className="text-neutral-500 font-mono">{log.time}</div>
                   <div className="text-white">
-                    Agent <span className="text-orange-500">{log.agent}</span> {log.action}{" "}
-                    <span className="text-white">{log.location}</span>
+                    Agent <span className="text-orange-500 font-mono">{log.agent}</span> {log.action}{" "}
+                    <span className="text-white font-mono">{log.location}</span>
                     {log.target && (
                       <span>
                         {" "}
-                        with agent <span className="text-orange-500">{log.target}</span>
+                        with agent <span className="text-orange-500 font-mono">{log.target}</span>
                       </span>
                     )}
                   </div>
@@ -147,7 +147,7 @@ export default function CommandCenterPage() {
               </div>
             </div>
 
-            <div className="text-xs text-neutral-500 space-y-1 w-full">
+            <div className="text-xs text-neutral-500 space-y-1 w-full font-mono">
               <div className="flex justify-between">
                 <span># 2025-06-17 14:23 UTC</span>
               </div>
@@ -195,7 +195,7 @@ export default function CommandCenterPage() {
               </svg>
 
               {/* Y-axis labels */}
-              <div className="absolute left-0 top-0 h-full flex flex-col justify-between text-xs text-neutral-500 -ml-5">
+              <div className="absolute left-0 top-0 h-full flex flex-col justify-between text-xs text-neutral-500 -ml-5 font-mono">
                 <span>500</span>
                 <span>400</span>
                 <span>300</span>
@@ -203,7 +203,7 @@ export default function CommandCenterPage() {
               </div>
 
               {/* X-axis labels */}
-              <div className="absolute bottom-0 left-0 w-full flex justify-between text-xs text-neutral-500 -mb-6">
+              <div className="absolute bottom-0 left-0 w-full flex justify-between text-xs text-neutral-500 -mb-6 font-mono">
                 <span>Jan 28, 2025</span>
                 <span>Feb 28, 2025</span>
               </div>
@@ -226,15 +226,15 @@ export default function CommandCenterPage() {
                 <div className="space-y-2">
                   <div className="flex justify-between text-xs">
                     <span className="text-neutral-400">High Risk Mission</span>
-                    <span className="text-white font-bold">190</span>
+                    <span className="text-white font-bold font-mono">190</span>
                   </div>
                   <div className="flex justify-between text-xs">
                     <span className="text-neutral-400">Medium Risk Mission</span>
-                    <span className="text-white font-bold">426</span>
+                    <span className="text-white font-bold font-mono">426</span>
                   </div>
                   <div className="flex justify-between text-xs">
                     <span className="text-neutral-400">Low Risk Mission</span>
-                    <span className="text-white font-bold">920</span>
+                    <span className="text-white font-bold font-mono">920</span>
                   </div>
                 </div>
               </div>
@@ -247,15 +247,15 @@ export default function CommandCenterPage() {
                 <div className="space-y-2">
                   <div className="flex justify-between text-xs">
                     <span className="text-neutral-400">High Risk Mission</span>
-                    <span className="text-white font-bold">190</span>
+                    <span className="text-white font-bold font-mono">190</span>
                   </div>
                   <div className="flex justify-between text-xs">
                     <span className="text-neutral-400">Medium Risk Mission</span>
-                    <span className="text-white font-bold">426</span>
+                    <span className="text-white font-bold font-mono">426</span>
                   </div>
                   <div className="flex justify-between text-xs">
                     <span className="text-neutral-400">Low Risk Mission</span>
-                    <span className="text-white font-bold">920</span>
+                    <span className="text-white font-bold font-mono">920</span>
                   </div>
                 </div>
               </div>
